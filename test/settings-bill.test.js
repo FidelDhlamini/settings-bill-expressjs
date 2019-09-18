@@ -59,53 +59,53 @@ describe('The Bill with settings factory function', function () {
 
     });
 
-    describe('use values', function () {
+    // describe('use values', function () {
 
-        it('it should be able to use the call cost set', function () {
-            let billWithSettings = settingsBill()
+    //     it('it should be able to use the call cost set', function () {
+    //         let billWithSettings = settingsBill()
 
-            billWithSettings.setCallCost(2.25);
-            billWithSettings.setCallCost(0.85);
+    //         billWithSettings.setCallCost(2.25);
+    //         billWithSettings.setCallCost(0.85);
 
-            billWithSettings.makeCall();
-            billWithSettings.makeCall();
-
-
-            assert.equal(6.75, billWithSettings.getTotalCost())
-            assert.equal(6.75, billWithSettings.getTotalCallCost())
-            assert.equal(0.00, billWithSettings.getTotalSmsCost())
+    //         billWithSettings.makeCall();
+    //         billWithSettings.makeCall();
 
 
-            //    assert.equal(25, billWithSettings.getCriticalLevel())
+    //         assert.equal(6.75, billWithSettings.getTotalCost())
+    //         assert.equal(6.75, billWithSettings.getTotalCallCost())
+    //         assert.equal(0.00, billWithSettings.getTotalSmsCost())
 
-        });
+
+    //         //    assert.equal(25, billWithSettings.getCriticalLevel())
+
+    //     });
         
 
-        it('it should be able to use the call cost set for 2 calls at 1.35 each', function () {
-            let billWithSettings = settingsBill()
+    //     it('it should be able to use the call cost set for 2 calls at 1.35 each', function () {
+    //         let billWithSettings = settingsBill()
 
-            billWithSettings.setCallCost(1.35);
-            billWithSettings.setCallCost(1.35);
+    //         billWithSettings.setCallCost(1.35);
+    //         billWithSettings.setCallCost(1.35);
 
-            billWithSettings.makeCall();
-            billWithSettings.makeCall();
-
-
-            assert.equal(2.70, billWithSettings.getTotalCost());
-            // assert.equal(2.70, billWithSettings.getTotalCallCost());
-            // assert.equal(0.00, billWithSettings.getTotalSmsCost());
+    //         billWithSettings.makeCall();
+    //         billWithSettings.makeCall();
 
 
-            //    assert.equal(25, billWithSettings.getCriticalLevel())
+    //         assert.equal(2.70, billWithSettings.getTotalCost());
+    //         // assert.equal(2.70, billWithSettings.getTotalCallCost());
+    //         // assert.equal(0.00, billWithSettings.getTotalSmsCost());
 
-        });
 
+    //         //    assert.equal(25, billWithSettings.getCriticalLevel())
 
+    //     });
 
 
 
 
 
-    });
+
+
+    // });
 
 });
