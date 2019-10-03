@@ -13,6 +13,7 @@ module.exports = function SettingsBill() {
     function recordAction(action) {
 
         let cost = 0;
+      if(!stopAdding()){
         if (action === 'sms') {
             cost = smsCost;
         } else if (action === 'call') {
@@ -24,6 +25,7 @@ module.exports = function SettingsBill() {
             cost,
             timestamp: new Date()
         });
+      }
     }
 
     function setSettings(settings) {
@@ -89,12 +91,16 @@ module.exports = function SettingsBill() {
         return getTotal('sms') + getTotal('call');
     }
 
+  function stopAdding(){
+      return grandTotal() >= criticalLevel
+  }
+
     function totals() {
         let smsTotal = getTotal('sms')
         let callTotal = getTotal('call')
         return {
-            smsTotal,
-            callTotal,
+            smsTotal: smsTotal.toFixed(2) ,
+            callTotal: callTotal.toFixed(2),
             grandTotal: grandTotal()
         }
     }
@@ -120,6 +126,7 @@ module.exports = function SettingsBill() {
         actionsFor,
         totals,
         hasReachedWarningLevel,
-        hasReachedCriticalLevel
+        hasReachedCriticalLevel,
+        grandTotal
     }
 }
