@@ -69,8 +69,6 @@ app.post('/settings', function (req, res) {
 
 app.post('/action', function (req, res) {
 
-
-
     settingsBill.recordAction(req.body.actionType)
 
     res.redirect('/')
@@ -88,8 +86,9 @@ app.get('/actions', function (req, res) {
 });
 
 app.get('/actions/:actionType', function (req, res) {
-    const actionType = req.params.actionType;
-    let rcdTime = settingsBill.actions(actionType)
+    const type = req.params.actionType;
+    let rcdTime = settingsBill.actionsFor(type)
+
     for (var i = 0; i < rcdTime.length; i++) {
         let elem = rcdTime[i];
         elem.timeAgo = moment(elem.timestamp).fromNow()
