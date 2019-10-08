@@ -36,13 +36,13 @@ app.use(bodyParser.json())
 app.get('/', function (req, res) {
     // console.log(settingsBill.getSettings())
     let color = ""
-   
+
     if (settingsBill.grandTotal() !== 0) {
         if (settingsBill.hasReachedWarningLevel()) {
             color = "warning";
         } else if (settingsBill.hasReachedCriticalLevel()) {
             color = "danger";
-           
+
 
 
         }
@@ -78,7 +78,7 @@ app.post('/action', function (req, res) {
 
 app.get('/actions', function (req, res) {
     let rcdTime = settingsBill.actions()
-    for(var i = 0; i < rcdTime.length;i++){
+    for (var i = 0; i < rcdTime.length; i++) {
         let elem = rcdTime[i];
         elem.timeAgo = moment(elem.timestamp).fromNow()
     }
@@ -90,7 +90,7 @@ app.get('/actions', function (req, res) {
 app.get('/actions/:actionType', function (req, res) {
     const actionType = req.params.actionType;
     let rcdTime = settingsBill.actions(actionType)
-    for(var i = 0; i < rcdTime.length;i++){
+    for (var i = 0; i < rcdTime.length; i++) {
         let elem = rcdTime[i];
         elem.timeAgo = moment(elem.timestamp).fromNow()
     }
@@ -98,7 +98,7 @@ app.get('/actions/:actionType', function (req, res) {
         actions: rcdTime
     })
 });
-const PORT = process.env.PORT || 3011;
+const PORT = process.env.PORT || 3021;
 
 app.listen(PORT, function () {
     console.log("App started at port:", PORT)

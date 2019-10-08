@@ -1,10 +1,10 @@
 module.exports = function SettingsBill() {
 
-   let smsCost;
-   let callCost;
-   let warningLevel;
-   let criticalLevel;
-   let actionList = [];
+    let smsCost;
+    let callCost;
+    let warningLevel;
+    let criticalLevel;
+    let actionList = [];
 
 
 
@@ -13,26 +13,26 @@ module.exports = function SettingsBill() {
     function recordAction(action) {
 
         let cost = 0;
-      if(!stopAdding()){
-        if (action === 'sms') {
-            cost = smsCost;
-        } else if (action === 'call') {
-            cost = callCost;
-        }
+        if (!stopAdding()) {
+            if (action === 'sms') {
+                cost = smsCost;
+            } else if (action === 'call') {
+                cost = callCost;
+            }
 
-        actionList.push({
-            type: action,
-            cost,
-            timestamp: new Date()
-        });
-      }
+            actionList.push({
+                type: action,
+                cost,
+                timestamp: new Date()
+            });
+        }
     }
 
     function setSettings(settings) {
         smsCost = Number(settings.smsCost);
-         callCost = Number(settings.callCost);
-         warningLevel = Number(settings.warningLevel);
-         criticalLevel = Number(settings.criticalLevel);
+        callCost = Number(settings.callCost);
+        warningLevel = Number(settings.warningLevel);
+        criticalLevel = Number(settings.criticalLevel);
     }
 
     function getSettings() {
@@ -77,6 +77,7 @@ module.exports = function SettingsBill() {
                 total += action.cost;
             }
         }
+
         return total;
 
         // the short way using reduce and arrow functions
@@ -91,17 +92,17 @@ module.exports = function SettingsBill() {
         return getTotal('sms') + getTotal('call');
     }
 
-  function stopAdding(){
-      return grandTotal() >= criticalLevel
-  }
+    function stopAdding() {
+        return grandTotal() >= criticalLevel
+    }
 
     function totals() {
         let smsTotal = getTotal('sms')
         let callTotal = getTotal('call')
         return {
-            smsTotal: smsTotal.toFixed(2) ,
+            smsTotal: smsTotal.toFixed(2),
             callTotal: callTotal.toFixed(2),
-            grandTotal: grandTotal()
+            grandTotal: grandTotal().toFixed(2)
         }
     }
 
